@@ -6,7 +6,6 @@ import styles from '@/app/ui/home.module.css';
 import Link from 'next/link';
 import { lusitana } from '@/app/ui/fonts';
 import Image from 'next/image';
-// import { anime } from '@/app/ui/anime';
 
 
 export default function Page() {
