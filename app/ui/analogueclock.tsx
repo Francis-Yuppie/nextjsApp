@@ -5,32 +5,34 @@ import React, { useEffect } from 'react';
 import './clock.css';
 
 const ClockComponent = () => {
-  useEffect(() => {
-     
-    let hours = document.querySelector('.hrs')
-    let minutes = document.querySelector('.mm')
-    let seconds = document.querySelector('.sc')
-    let year = document.querySelector('.year')
-
+useEffect(() => {
+    const hours = document.querySelector('.hrs');
+    const minutes = document.querySelector('.mm');
+    const seconds = document.querySelector('.sc');
+    const year = document.querySelector('.year');
 
     function updateClock() {
-    const now = new Date();
-    const hrs = now.getHours() % 12
-    const mins = now.getMinutes()
-    const sec = now.getSeconds()
+        const now = new Date();
+        const hrs = now.getHours() % 12;
+        const mins = now.getMinutes();
+        const sec = now.getSeconds();
 
-    let hourAngle = (hrs + mins / 60) * 30;
-    let minAngle = (mins + sec / 60) * 6;
-    let secAngle = (sec * 6);
+        let hourAngle = (hrs + mins / 60) * 30;
+        let minAngle = (mins + sec / 60) * 6;
+        let secAngle = sec * 6;
 
-    hours.style.transform = `rotate(${hourAngle}deg)`;
-    minutes.style.transform = `rotate(${minAngle}deg)`;
-    seconds.style.transform = `rotate(${secAngle}deg)`;
-}
+        if (hours && minutes && seconds) {
+            hours.style.transform = `rotate(${hourAngle}deg)`;
+            minutes.style.transform = `rotate(${minAngle}deg)`;
+            seconds.style.transform = `rotate(${secAngle}deg)`;
+        }
+    }
 
-setInterval(updateClock, 1000);
+    const intervalId = setInterval(updateClock, 1000);
 
-  }, []);
+    return () => clearInterval(intervalId);
+}, []);
+
 
   return (
       <div className="glass-clock">
