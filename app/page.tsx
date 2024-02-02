@@ -21,7 +21,6 @@ export default function Page() {
          <div className="ml-auto md:mt-4 hidden md:block" style={{transform: 'translateY(40px)'}}>
            { <ClockComponent />}
          </div>
-    
       </div>
      
       <div className="mt-4 flex grow flex-col gap-4 md:flex-row">
